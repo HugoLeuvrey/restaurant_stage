@@ -19,26 +19,26 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home') ->middleware('App\Http\Middleware\Authenticate');
 
-Route::get('/restaurant/create', 'AddrestaurantController@create');
-Route::get('/restaurant/{restaurant}', 'AddrestaurantController@show');
-
-
-Route::patch('/home', 'AddrestaurantController@store');
-Route::delete('/restaurant/delete/{restaurant}', 'AddrestaurantController@destroy');
+Route::get('/restaurant/create', 'AddrestaurantController@create') ->middleware('App\Http\Middleware\Authenticate');
+Route::get('/restaurant/{restaurant}', 'AddrestaurantController@show') ->middleware('App\Http\Middleware\Authenticate');
 
 
-Route::get('/category/index/{category}', 'CategoryController@index');
-Route::get('/category/create/{restaurant}', 'CategoryController@create');
-Route::patch('/category/create/{restaurant}', 'CategoryController@store');
-Route::delete('/category/delete/{category}', 'CategoryController@destroy');
+Route::patch('/home', 'AddrestaurantController@store') ->middleware('App\Http\Middleware\Authenticate');
+Route::delete('/restaurant/delete/{restaurant}', 'AddrestaurantController@destroy') ->middleware('App\Http\Middleware\Authenticate');
+
+
+Route::get('/category/index/{category}', 'CategoryController@index') ->middleware('App\Http\Middleware\Authenticate');
+Route::get('/category/create/{restaurant}', 'CategoryController@create') ->middleware('App\Http\Middleware\Authenticate');
+Route::patch('/category/create/{restaurant}', 'CategoryController@store') ->middleware('App\Http\Middleware\Authenticate');
+Route::delete('/category/delete/{category}', 'CategoryController@destroy') ->middleware('App\Http\Middleware\Authenticate');
 
 
 
-Route::get('/dish/index/{restaurant}', 'DishController@index');
-Route::get('/dish/create/{restaurant}', 'DishController@create');
-Route::patch('/dish/create/{restaurant}', 'DishController@store');
-Route::delete('/dish/delete/{dish}', 'DishController@destroy');
+Route::get('/dish/index/{restaurant}', 'DishController@index') ->middleware('App\Http\Middleware\Authenticate');
+Route::get('/dish/create/{restaurant}', 'DishController@create') ->middleware('App\Http\Middleware\Authenticate');
+Route::patch('/dish/create/{restaurant}', 'DishController@store') ->middleware('App\Http\Middleware\Authenticate');
+Route::delete('/dish/delete/{dish}', 'DishController@destroy') ->middleware('App\Http\Middleware\Authenticate');
 
 
