@@ -1,4 +1,4 @@
-Fonctionnalité developpé: 
+Fonctionnalité developpée: 
 
 - Systeme d'authentification
 - Ajouter un restaurant
